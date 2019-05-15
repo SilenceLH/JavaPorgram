@@ -1,4 +1,5 @@
 public class Hero {
+
     String name; //姓名
 
     float hp; //血量
@@ -6,18 +7,34 @@ public class Hero {
     float armor; //护甲
 
     int moveSpeed; //移动速度
-    public static void main(String[] args) {
-        Hero garen =  new Hero();
-        garen.name = "盖伦";
-        garen.hp = 616.28f;
-        garen.armor = 27.536f;
-        garen.moveSpeed = 350;
 
-        Hero teemo =  new Hero();
-        teemo.name = "提莫";
-        teemo.hp = 383f;
-        teemo.armor = 14f;
-        teemo.moveSpeed = 330;
-        System.out.println("teemo = " + teemo.name);
+    public Hero(){
+
     }
+
+    public Hero(String name,float hp){
+        this.name = name;
+        this.hp = hp;
+    }
+
+    //复活
+    public void revive(Hero h){
+        h = new Hero("提莫",383);
+        System.out.println(h.hp);
+    }
+
+    public static void main(String[] args) {
+        Hero teemo =  new Hero("提莫",383);
+
+        //受到400伤害，挂了
+        teemo.hp = teemo.hp - 400;
+
+        teemo.revive(teemo);
+
+        System.out.println(teemo.hp); //输出多少？ 怎么理解？
+        //方法体内创建的对象被销毁，已经出了作用范围
+
+
+    }
+
 }
